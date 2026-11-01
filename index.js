@@ -2,9 +2,10 @@ console.log("Minigames is currently running");
 
 //Current Minigame ideas:
 /*
-- just means that these are the minigames I will be prioritizing
-1. *Translator
-2. *Cookie Clicker
+* just means that these are the minigames I will be prioritizing
+- means I'm done
+1. *Translator -
+2. *Cookie Clicker - 
 3. *Cards
     for cards there will be two objectives:
     a. Either play a card higher than the computer's card

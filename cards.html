@@ -3,10 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cards</title>
+    <title>Black Jack</title>
     <link rel="stylesheet" href="/style.css">
+    <style>
+        body, .conatiner, .minigames{
+            background-color: #000000 !important;
+            color: #ffffff;
+            font-family: monospace;
+        }
+
+        button{
+            background: transparent !important;
+            border: none !important;
+            color: #ffffff !important;
+            padding: 8px 12px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        #deal-btn, #hit-btn{
+            color: #ffffff !important;
+        }
+
+        #deal-btn:hover, #hit-btn:hover {
+            background: rgba(0, 255, 102, 0.1) !important;
+        }
+
+        #stand-btn, #compare-btn {
+            color: #ffffff !important;
+        }
+
+        #stand-btn:hover, #compare-btn:hover {
+            background: rgba(255, 51, 51, 0.1) !important;
+        }       
+
+        .card-box{
+            display: inline-block;
+            border: 1px solid #ffffff;
+            padding: 10px 15px;
+            margin: 5px;
+            background:#050505;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+        }
+        .clickable-card {
+            cursor: pointer;
+            border-color: #ffffff;
+            transition: transform 0.1s;
+        }
+
+        .clickable-card:hover{
+            transform: translateY(-5px);
+            background: rgba(0, 255, 102, 0.2);
+        }
+
+        a{
+            color: #ffffff;
+            text-decoration:underline;
+        }
+
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Terminal Blackjack</h1>
+        <p id="player-greeting"></p>
+
+        <p style="font-size: 1.3rem;">Chips: <span id="chip-count" style="font-weight: bold; color: #00ff66;">500</span></p>
+        <p style="font-size: 0.9rem;">Current Bet: <span id="current-bet">50</span></p>
+
+        <hr style="border-color: #333; margin: 20px 0;">
+
+
+        <div>
+            <h3>DEALER HAND (Score: <span id="dealer-score"></span> )</h3>
+        <div> id="dealer-cards"</div>
+        </div><br>
+
+        <div>
+            <h3> Player Hand (Score: <span id="player-score">0</span>)</h3>
+            <div id="player-cards"></div>
+        </div><br>
+
+        <p id="message" style="color: #ffffff; font-weight: bold; min-height: 1.5rem;"></p>
+
+        <div> id="betting-controls">
+            <button id="deal-btn">Deal Cards</button>
+        </div>
+
+        <div id="action-controls" style="display: none;">
+            <button id="hit-btn">Hit</button>
+            <button id="stand-btn" style="margin-left: 10px;">Stand</button>
+            <button id="compare-btn" style="margin-left: 10px; color: #ffffff !important">Compare</button>
+        </div>
+
+        <div id="card selection" style="display: none; margin-top: 15x; border: 1px dashed #ffffff; padding: 10px;">
+            <p style="color: #ffffff;">[Compare] Click one of your cards above to play against the dealer</p>
+        </div> <br><br>
+
+        <a href="index.html" class="back-button">More Games</a>
+    </div>
 
     
 
