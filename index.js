@@ -1,7 +1,7 @@
 console.log("Minigames is currently running");
 
-window.alert("This is an alert");
-window.alert("You are stinky");
+
+
 
 //Current Minigame ideas:
 /*
@@ -21,13 +21,31 @@ window.alert("You are stinky");
 
 */
 
+console.log("Minigames is currently running");
 
+const submitBtn = document.getElementById("submit");
+const usernameInput = document.getElementById("myText");
+const loginDiv = document.getElementById("login");
+const minigamesDiv = document.getElementById("minigames");
+const heading = document.getElementById("H1");
 
-let username;
-document.getElementById("submit").onclick = function(){
-    username = document.getElementById("myText").value;
-   document.getElementById("H1").textContent = `Welcome to Fundamental Minigames, ${username}!`;
-}
+submitBtn.onclick = function() {
+    let username = usernameInput.value.trim();
 
+    // Make sure they typed something
+    if (username === "") {
+        window.alert("Please enter a username first!");
+        return;
+    }
 
+    // Update the welcome text
+    heading.textContent = `Welcome to Fundamental Minigames, ${username}!`;
+
+    // Save the username to browser storage
+    localStorage.setItem("playerUsername", username);
+
+    // Hide the login box and show the minigames list
+    loginDiv.style.display = "none";
+    minigamesDiv.style.display = "block";
+};
 

@@ -1,6 +1,103 @@
-body{
-    font-family: Arial, sans-serif;
-    background-color: #717070;
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+    background-color: #0c0c0c;
+    color: #00ff66;
+    font-family: 'Share Tech Mono', monospace, courier;
     margin: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content:flex-start;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+
+
+
+.container{
+    width: 100%;
+    max-width: 800px;
+}
+
+h1{
+    font-size: 2.2em;
+    text-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
+    margin-bottom:10px;
+    border-bottom: 2px dashed #00ff66;
+}
+
+h1{
+    color: #00b347;
+    margin-top: 30px;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+input[type="text"] {
+    background-color: #000000;
+    border: 2px solid #00ff66;
+    color:#00ff66;
+   font-family: 'Share Tech Mono', monospace;
+   font-size: 1.1rem;
+   padding: 8px 12px;
+   outline: none;
+   box-shadow: inset 0 0 5px rgba(0, 255, 102, 0.2);    
+}
+
+input[type="text"]::placeholder{
+    color: #006622;
+}
+
+button {
+    background-color:#00ff66;
+    color: #000000;
+    border:none;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 9px 18px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.1s, box-shadow 0.1s;
+}
+
+button:hover {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px #ffffff;
+}
+
+.minigames ul{
+    list-style-type: none;
     padding: 0;
 }
+
+.minigames a{
+    color: #00ff66;
+    text-decoration: none;
+    font-size: 1.2em;
+    display: inlineblock;
+    padding: 4px 8px;
+    transition: background-color 0.1s, color 0.1s;
+}
+
+.minigames a::before{
+    content: ">";
+    color: #006622;
+}
+
+
+.minigames a:hover{
+    background-color: #00ff66;
+    color: #000000;
+}
+
+.minigames a:hover::before{
+    color:#000000;
+}
+
