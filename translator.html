@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Translator</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    
+    <div class="container">
+        <h1>Binary Translator</h1>
+        <p id="player-greeting"></p>
+        <p>Translate the following binary into regular text</p>
 
-    <script src ="translator.js"></script>
+        <h2 id="binary" style="color: #ffffff; letter-spacing: 2px;">Loading...</h2><br>
+        <input type="text" id="translation" placeholder="Your Answer: ex. dog">
+        <button id="guess">Submit Answer</button><br>
+
+        <p id="result" style="margin-top: 20px; font-weight: bold;"></p>
+        <p>Score: <span id="score">0</span></p>
+
+        <br><br>
+        <a href="index.html" class="back-button">More Games</a>
+    </div>
+
+    <script src="translator.js"></script>
 </body>
 </html>

@@ -1,11 +1,8 @@
 console.log("Minigames is currently running");
 
-
-
-
 //Current Minigame ideas:
 /*
-* just means that these are the minigames I will be prioritizing
+- just means that these are the minigames I will be prioritizing
 1. *Translator
 2. *Cookie Clicker
 3. *Cards
@@ -21,31 +18,42 @@ console.log("Minigames is currently running");
 
 */
 
-console.log("Minigames is currently running");
-
 const submitBtn = document.getElementById("submit");
 const usernameInput = document.getElementById("myText");
 const loginDiv = document.getElementById("login");
 const minigamesDiv = document.getElementById("minigames");
 const heading = document.getElementById("H1");
 
-submitBtn.onclick = function() {
-    let username = usernameInput.value.trim();
 
-    // Make sure they typed something
-    if (username === "") {
-        window.alert("Please enter a username first!");
-        return;
-    }
+const savedUsername = localStorage.getItem("playerUsername");
 
-    // Update the welcome text
-    heading.textContent = `Welcome to Fundamental Minigames, ${username}!`;
+if (savedUsername) {
+    
+    heading.textContent = `Welcome back, ${savedUsername}!`;
+    if (loginDiv) loginDiv.style.display = "none";
+    if (minigamesDiv) minigamesDiv.style.display = "block";
+}
 
-    // Save the username to browser storage
-    localStorage.setItem("playerUsername", username);
 
-    // Hide the login box and show the minigames list
-    loginDiv.style.display = "none";
-    minigamesDiv.style.display = "block";
-};
+if (submitBtn) {
+    submitBtn.onclick = function() {
+        let username = usernameInput.value.trim();
 
+        
+        if (username === "") {
+            submitBtn.textContent = "Please enter a username";
+            submitBtn.style.color = "#ff0000";
+            return;
+        }
+
+        
+        localStorage.setItem("playerUsername", username);
+
+        
+        heading.textContent = `Welcome to Fundamental Minigames, ${username}!`;
+
+       
+        loginDiv.style.display = "none";
+        minigamesDiv.style.display = "block";
+    };
+}

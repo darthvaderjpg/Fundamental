@@ -1,36 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 body {
-    background-color: #0c0c0c;
-    color: #00ff66;
-    font-family: 'Share Tech Mono', monospace, courier;
+    background-color: #320e13;
+    color: #e3e9e5;
+    font-family: 'JetBrains Mono', monospace;
     margin: 0;
     padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content:flex-start;
+    justify-content: flex-start;
     min-height: 100vh;
     box-sizing: border-box;
 }
 
-
-
-
-.container{
+.container {
     width: 100%;
     max-width: 800px;
 }
 
-h1{
+h1 {
     font-size: 2.2em;
-    text-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
-    margin-bottom:10px;
-    border-bottom: 2px dashed #00ff66;
-}
-
-h1{
-    color: #00b347;
+    text-shadow: 0 0 8px rgba(136, 136, 136, 0.4);
+    margin-bottom: 10px;
+    border-bottom: 2px dashed #e9eeeb;
+    color: #d7e2db;
     margin-top: 30px;
 }
 
@@ -41,63 +35,59 @@ p {
 
 input[type="text"] {
     background-color: #000000;
-    border: 2px solid #00ff66;
-    color:#00ff66;
-   font-family: 'Share Tech Mono', monospace;
-   font-size: 1.1rem;
-   padding: 8px 12px;
-   outline: none;
-   box-shadow: inset 0 0 5px rgba(0, 255, 102, 0.2);    
+    border: 2px solid #dde1df;
+    color: #dbf6e6;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    padding: 8px 12px;
+    outline: none;
 }
 
-input[type="text"]::placeholder{
-    color: #006622;
+input[type="text"]::placeholder {
+    color: #7d807e;
 }
 
 button {
-    background-color:#00ff66;
+    background-color: #dfe9e3;
     color: #000000;
-    border:none;
-    font-family: 'Share Tech Mono', monospace;
+    border: none;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 1.1rem;
     font-weight: bold;
     padding: 9px 18px;
     cursor: pointer;
     text-transform: uppercase;
-    transition: background-color 0.1s, box-shadow 0.1s;
+    transition: background-color 0.1s;
 }
 
 button:hover {
     background-color: #ffffff;
-    box-shadow: 0 0 10px #ffffff;
 }
 
-.minigames ul{
+.minigames ul {
     list-style-type: none;
     padding: 0;
 }
 
-.minigames a{
-    color: #00ff66;
+.minigames a {
+    color: #e3eee7;
     text-decoration: none;
     font-size: 1.2em;
-    display: inlineblock;
+    display: inline-block;
     padding: 4px 8px;
     transition: background-color 0.1s, color 0.1s;
 }
 
-.minigames a::before{
+.minigames a::before {
     content: ">";
     color: #006622;
 }
 
-
-.minigames a:hover{
-    background-color: #00ff66;
+.minigames a:hover {
+    background-color: #ecefed;
     color: #000000;
 }
 
-.minigames a:hover::before{
-    color:#000000;
+.minigames a:hover::before {
+    color: #000000;
 }
-
