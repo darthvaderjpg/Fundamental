@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const feedbackEl = document.getElementById("result");         
     const scoreEl = document.getElementById("score");             
 
-    // Load player username
+
     const currentPlayer = localStorage.getItem("playerUsername") || "Player";
     if (greetingEL) {
         greetingEL.textContent = `Welcome to the Translator Minigame, ${currentPlayer}!`;
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function generateRandomWord() {
         const characters = "abcdefghijklmnopqrstuvwxyz";
-        const wordLength = Math.floor(Math.random() * 5) + 3; // Random length between 3 and 7
+        const wordLength = Math.floor(Math.random() * 5) + 3;
         let randomWord = "";
         for (let i = 0; i < wordLength; i++) {
             const randomIndex = Math.floor(Math.random() * characters.length);
@@ -74,6 +74,5 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     }
 
-    // Start the game loop
     nextRound();
 });

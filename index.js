@@ -36,7 +36,7 @@ const newWindowBtn = document.getElementById("new-window-btn");
 
 function loadUserSession(username) {
     heading.textContent = `Welcome back, ${username}!`;
-    if (subGreeting) subGreeting.textContent = `> Select a minigame from the terminal suite below:`;
+    if (subGreeting) subGreeting.textContent = `> Select a minigame:`;
     if (sessionStatus) sessionStatus.textContent = `USER: ${username}`;
     if (loginDiv) loginDiv.style.display = "none";
     if (minigamesDiv) minigamesDiv.style.display = "block";
@@ -54,7 +54,6 @@ function clearUserSession() {
     if (usernameInput) usernameInput.value = "";
 }
 
-// Initial session check
 const savedUsername = localStorage.getItem("playerUsername");
 if (savedUsername) {
     loadUserSession(savedUsername);
