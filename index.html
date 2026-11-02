@@ -5,30 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fundamental Minigames</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #320e13 !important;
+            color: #ffffff !important;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* 80x24 Terminal Window Bounds */
+        .terminal-frame {
+            width: 100%;
+            max-width: 80ch; /* Enforces 80 character column width */
+            background-color: #050505;
+            border: 2px solid #ffffff;
+            border-radius: 6px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 400px;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            color: #888888;
+            font-size: 0.85rem;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        /* Compact buttons sized to match the status text */
+        .terminal-header button {
+            background: transparent !important;
+            border: 1px solid #00ff66 !important;
+            color: #00ff66 !important;
+            padding: 2px 6px;
+            font-family: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .terminal-header button:hover {
+            background: rgba(0, 255, 102, 0.15) !important;
+        }
+
+        .terminal-header .logout-btn {
+            border-color: #ff3366 !important;
+            color: #ff3366 !important;
+        }
+
+        .terminal-header .logout-btn:hover {
+            background: rgba(255, 51, 102, 0.2) !important;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-top: 0;
+        }
+
+        input[type="text"] {
+            background: #111;
+            border: 1px solid #00ff66;
+            color: #00ff66;
+            padding: 8px 12px;
+            font-family: monospace;
+            font-size: 1rem;
+            border-radius: 4px;
+        }
+
+        #submit {
+            background: transparent !important;
+            border: 1px solid #00ff66 !important;
+            color: #00ff66 !important;
+            padding: 8px 16px;
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #submit:hover {
+            background: rgba(0, 255, 102, 0.1) !important;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #00ff66 !important;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #000000 !important;
+        }
+
+        /* Terminal Footer Credit */
+        .terminal-footer {
+            display: flex;
+            justify-content: flex-end;
+            border-top: 1px solid #333;
+            padding-top: 10px;
+            margin-top: 20px;
+            color: #666666;
+            font-size: 0.75rem;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1 id="H1">Welcome to Fundamental Minigames</h1>
-        <p>These are minigames based on the fundamental concepts of programming!</p>
-        <p>Enter your username to get started and then choose a minigame!</p><br><br>
+    <div class="terminal-frame">
+        <div>
+            <div class="terminal-header">
+                <span>Vers: 1.0 Res:(80x24)</span>
+                <span id="session-status">STATUS: UNAUTHENTICATED</span>
+                <div class="header-controls">
+                    <button id="new-window-btn" title="Pop out terminal window">[🗗] New Window</button>
+                    <button id="logout-btn" class="logout-btn" style="display: none;">[X] Logout</button>
+                </div>
+            </div>
 
-        <div id="login">
-            <label>Username: </label>
-            <input id="myText" type="text" placeholder="Enter your username"><br><br>
-            <button id="submit">GO!</button>
+            <div class="container">
+                <h1 id="H1">Welcome to Fundamental Minigames</h1>
+                <p id="sub-greeting">> Enter your username to get started and then choose a minigame!</p><br>
+
+                <div id="login">
+                    <label>Username: </label>
+                    <input id="myText" type="text" placeholder="Enter your username"><br><br>
+                    <button id="submit">Authenticate</button>
+                </div>
+
+                <div class="minigames" id="minigames" style="display: none;">
+                    <h2>Minigames</h2>
+                    <ul>
+                        <li><a href="translator.html">Translator</a></li>
+                        <li><a href="cookieClicker.html">Cookie Clicker</a></li>
+                        <li><a href="cards.html">Cards</a></li>
+                        <li><a href="ticTacToe.html">Tic-Tac-Toe</a></li>
+                        <li><a href="dinoRunner.html">Dino Runner</a></li>
+                        <li><a href="flappyBird.html">Flappy Bird</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <div class="minigames" id="minigames" style="display: none;">
-            <h2>Minigames</h2>
-            <ul>
-                <li><a href="translator.html">Translator</a></li>
-                <li><a href="cookieClicker.html">Cookie Clicker</a></li>
-                <li><a href="cards.html">Cards</a></li>
-                <li><a href="ticTacToe.html">Tic-Tac-Toe</a></li>
-                <li><a href="dinoRunner.html">Dino Runner</a></li>
-                <li><a href="flappyBird.html">Flappy Bird</a></li>
-            </ul>
+        <div class="terminal-footer">
+            <span>Created by: Cookie Bandit</span>
         </div>
     </div>
 
