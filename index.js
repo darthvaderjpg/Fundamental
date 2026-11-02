@@ -1,3 +1,8 @@
+//Name: Siddarth Iyer
+//Date: 11/1/26
+//Rev:01
+//Notes:None
+
 console.log("Minigames is currently running");
 
 //Current Minigame ideas:

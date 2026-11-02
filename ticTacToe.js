@@ -1,3 +1,7 @@
+//Name: Siddarth Iyer
+//Date: 11/1/26
+//Rev:01
+//Notes:None
 document.addEventListener("DOMContentLoaded", function() {
     const playerGreeting = document.getElementById("player-greeting");
     const playerScoreEl = document.getElementById("player-score");
