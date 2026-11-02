@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Jack</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        body, .conatiner, .minigames{
-            background-color: #000000 !important;
-            color: #ffffff;
+        body, .container, .minigames {
+            background-color: #320e13 !important;
+            color: #ffffff !important;
             font-family: monospace;
         }
 
-        button{
+        button {
             background: transparent !important;
             border: none !important;
             color: #ffffff !important;
@@ -20,57 +20,62 @@
             font-family: inherit;
             cursor: pointer;
         }
-        button:hover{
-            background-color: rgba(255, 255, 255, 0.1) !important;
+        button:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
         }
 
-        #deal-btn, #hit-btn{
-            color: #ffffff !important;
+        #deal-btn, #hit-btn {
+            color: #00ff66 !important;
         }
-
-        #deal-btn:hover, #hit-btn:hover {
-            background: rgba(0, 255, 102, 0.1) !important;
-        }
-
         #stand-btn, #compare-btn {
-            color: #ffffff !important;
+            color: #ff3333 !important;
         }
 
-        #stand-btn:hover, #compare-btn:hover {
-            background: rgba(255, 51, 51, 0.1) !important;
-        }       
-
-        .card-box{
+        .card-box {
             display: inline-block;
-            border: 1px solid #ffffff;
-            padding: 10px 15px;
-            margin: 5px;
-            background:#050505;
+            border: 1px solid #00ff66;
+            background-color: #050505;
+            padding: 12px 18px;
+            margin: 6px;
+            font-size: 1.2rem;
             font-weight: bold;
-            min-width: 40px;
+            font-family: monospace;
+            border-radius: 4px;
+            box-shadow: 0 0 8px rgba(0, 255, 102, 0.15);
             text-align: center;
+            min-width: 45px;
+            user-select: none;
         }
+
+        .card-box.card-red {
+            color: #ff3333;
+            border-color: #ff3333;
+            box-shadow: 0 0 8px rgba(255, 51, 51, 0.15);
+        }
+
+        .card-box.card-black {
+            color: #ffffff;
+            border-color: #00ff66;
+        }
+
         .clickable-card {
             cursor: pointer;
-            border-color: #ffffff;
-            transition: transform 0.1s;
+            transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        .clickable-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 12px rgba(0, 255, 102, 0.6);
         }
 
-        .clickable-card:hover{
-            transform: translateY(-5px);
-            background: rgba(0, 255, 102, 0.2);
+        a {
+            color: #ffffff !important;
+            text-decoration: underline;
         }
-
-        a{
-            color: #ffffff;
-            text-decoration:underline;
-        }
-
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Terminal Blackjack</h1>
+        <h1>Black Jack</h1>
         <p id="player-greeting"></p>
 
         <p style="font-size: 1.3rem;">Chips: <span id="chip-count" style="font-weight: bold; color: #00ff66;">500</span></p>
@@ -78,38 +83,60 @@
 
         <hr style="border-color: #333; margin: 20px 0;">
 
-
+        <!-- Dealer Section -->
         <div>
-            <h3>DEALER HAND (Score: <span id="dealer-score"></span> )</h3>
-        <div> id="dealer-cards"</div>
-        </div><br>
+            <h3>DEALER HAND (Score: <span id="dealer-score">0</span>)</h3>
+            <div id="dealer-cards">
+                <div class="card-box card-black">[ # ]</div>
+                <div class="card-box card-black">[ # ]</div>
+            </div>
+            <p style="font-size: 0.85rem; color: #ff3333; margin-top: 5px;">Dealer Captured Piles: <span id="dealer-captured-count">0</span> cards</p>
+        </div>
 
+        <br>
+
+       
         <div>
-            <h3> Player Hand (Score: <span id="player-score">0</span>)</h3>
-            <div id="player-cards"></div>
-        </div><br>
+            <h3>Player Hand(Score: <span id="player-score">0</span>)</h3>
+            <div id="player-cards">
+                <div class="card-box card-black">[ ? ]</div>
+                <div class="card-box card-black">[ ? ]</div>
+            </div>
+            <p style="font-size: 0.85rem; color: #00ff66; margin-top: 5px;">Your Captured Piles: <span id="player-captured-count">0</span> cards</p>
+        </div>
 
-        <p id="message" style="color: #ffffff; font-weight: bold; min-height: 1.5rem;"></p>
+        <br>
+        <p id="game-message" style="color: #ffffff; font-weight: bold; min-height: 1.5rem;"></p>
 
-        <div> id="betting-controls">
+     
+        <div id="betting-controls">
             <button id="deal-btn">Deal Cards</button>
         </div>
 
         <div id="action-controls" style="display: none;">
             <button id="hit-btn">Hit</button>
             <button id="stand-btn" style="margin-left: 10px;">Stand</button>
-            <button id="compare-btn" style="margin-left: 10px; color: #ffffff !important">Compare</button>
+            <button id="compare-btn" style="margin-left: 10px; color: #ffff33 !important;">Compare Card</button>
         </div>
 
-        <div id="card selection" style="display: none; margin-top: 15x; border: 1px dashed #ffffff; padding: 10px;">
-            <p style="color: #ffffff;">[Compare] Click one of your cards above to play against the dealer</p>
-        </div> <br><br>
+        <div id="compare-selection" style="display: none; margin-top: 15px; border: 1px dashed #00ff66; padding: 10px;">
+            <p style="color: #ffff33;">[ COMPARE ] Click one of your cards above to play it against the dealer!</p>
+            <button id="cancel-compare-btn" style="color: #ff3333 !important; margin-top: 8px;">Cancel Compare</button>
+        </div>
 
+        <!-- Terminal Combat Log Ticker -->
+        <div style="margin-top: 25px;">
+            <h3 style="font-size: 0.9rem; color: #888; margin-bottom: 5px;">// SYSTEM_LOG_</h3>
+            <div id="combat-log" style="background: #050505; border: 1px solid #333; padding: 10px; height: 110px; overflow-y: auto; font-size: 0.85rem; color: #00ff66; font-family: monospace;">
+                <div style="color: #666;">[SYSTEM] BLACK JACK INITIALIZED</div>
+                <div style="color: #666;">[SYSTEM] STANDBY FOR PLAYER INPUT...</div>
+            </div>
+        </div>
+
+        <br><br>
         <a href="index.html" class="back-button">More Games</a>
     </div>
 
-    
-
-    <script src ="cards.js"></script>
+    <script src="cards.js"></script>
 </body>
 </html>
