@@ -4,12 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body, .container, .minigames {
+            background-color: #320e13 !important;
+            color: #ffffff !important;
+            font-family: monospace;
+        }
+
+        button {
+            background: transparent !important;
+            border: none !important;
+            color: #ffffff !important;
+            padding: 8px 12px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+        button:hover {
+            background: rgba(255,255,255,.1) !important;
+        }
+
+        #reset-btn {
+            color: #00ff66 !important;
+        }
+
+        .ttt-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            grid-template-rows: repeat(3, 80px);
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .ttt-cell {
+            background-color: #050505;
+            border: 1px solid #ffffff;
+            font-size: 2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            user-select: none;
+        }
+        .ttt-cell:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 12px rgba(0,255,102,0.6);
+        }
+
+        
+        .player-mark {
+            color: #00ff66 !important;
+            border-color: #00ff66 !important;
+            box-shadow: 0 0 8px rgba(0,255,102, 0.25);
+        }
+
+        
+        .cpu-mark {
+            color: #ffffff !important;
+            border-color: #ffffff !important;
+            box-shadow: 0 0 8px rgba(255,255,255, 0.25);
+        }
+
+        a {
+            color: #ffffff !important;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Tic Tac Toe</h1>
+        <p id="player-greeting"></p>
 
-    
+        
+        <div style="margin-bottom: 15px;">
+            <label>Choose Your Symbol: </label>
+            <select id="symbol-select" style="background: #050505; color: #00ff66; border: 1px solid #00ff66; padding: 4px; font-family: monospace;">
+                <option value="X">X</option>
+                <option value="O">O </option>
+            </select>
+        </div>
 
-    <script src ="ticTacToe.js"></script>
+        <p style="font-size: 1.1rem;">Score - Player: <span id="player-score" style="color: #00ff66; font-weight: bold;">0</span> | CPU Jimmothy: <span id="cpu-score" style="color: #ffffff; font-weight: bold;">0</span></p>
+        <hr style="border-color: #333; margin: 20px 0;">
+
+        <p id="game-message" style="color: #ffffff; font-weight: bold; min-height: 1.5rem;">[SYSTEM] Turn: Player</p>
+        
+        <div class="ttt-grid" id="ttt-grid">
+            <div class="ttt-cell" data-index="0"></div>
+            <div class="ttt-cell" data-index="1"></div>
+            <div class="ttt-cell" data-index="2"></div>
+            <div class="ttt-cell" data-index="3"></div>
+            <div class="ttt-cell" data-index="4"></div>
+            <div class="ttt-cell" data-index="5"></div>
+            <div class="ttt-cell" data-index="6"></div>
+            <div class="ttt-cell" data-index="7"></div>
+            <div class="ttt-cell" data-index="8"></div>
+        </div>
+
+        <div>
+            <button id="reset-btn">Reset Board</button>
+        </div>
+
+        <div style="margin-top: 25px;">
+            <h3 style="font-size: 0.9rem; color: #888; margin-bottom: 5px;">// SYSTEM_LOG_</h3>
+            <div id="combat-log" style="background: #050505; border: 1px solid #333; padding: 10px; height: 100px; overflow-y: auto; font-size: 0.85rem; color: #00ff66; font-family: monospace;">
+                <div style="color: #666;">[SYSTEM] Tic Tac Toe protocol initialized</div>
+                <div style="color: #666;">[SYSTEM] STANDBY FOR PLAYER INPUT</div>
+            </div>
+        </div>
+        <br><br>
+        <a href="index.html" class="back-button">More Games</a>
+    </div>
+
+    <script src="ticTacToe.js"></script>
 </body>
 </html>
