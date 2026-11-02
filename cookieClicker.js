@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const cpsCountElement = document.getElementById("cps-count");
     const clickBtn = document.getElementById("click-btn");
 
-    // Upgrade Elements
+    
     const buyCursorBtn = document.getElementById("upgrade1");
     const cursorCostEl = document.getElementById("cursor-cost");
     const cursorCountEl = document.getElementById("cursor-count");
@@ -29,11 +29,11 @@ document.addEventListener("DOMContentLoaded", function() {
         playerGreeting.textContent = `${currentPlayer}`;
     }
 
-    // Game variables
+    
     let cookies = 0;
     let cookiesPerSecond = 0;
 
-    // Upgrade quantities & costs
+    
     let cursorCount = 0;
     let cursorCost = 15;
 
@@ -46,12 +46,12 @@ document.addEventListener("DOMContentLoaded", function() {
     let factoryCount = 0;
     let factoryCost = 300;
 
-    // Recalculate total CPS based on owned items
+    
     function calculateCPS() {
         cookiesPerSecond = (cursorCount * 1) + (temuCount * 4) + (grandmaCount * 12) + (factoryCount * 35);
     }
 
-    // SAVE GAME
+    
     function saveGame() {
         const gameSave = {
             cookies,
@@ -60,12 +60,12 @@ document.addEventListener("DOMContentLoaded", function() {
             grandmaCount, grandmaCost,
             factoryCount, factoryCost
         };
-        localStorage.setItem("terminalCookieSave", JSON.stringify(gameSave));
+        localStorage.setItem("Save", JSON.stringify(gameSave));
     }
 
-    // LOAD GAME
+    
     function loadGame() {
-        const savedData = localStorage.getItem("terminalCookieSave");
+        const savedData = localStorage.getItem("Save");
         if (savedData) {
             const parsedData = JSON.parse(savedData);
             cookies = parsedData.cookies || 0;
@@ -99,17 +99,17 @@ document.addEventListener("DOMContentLoaded", function() {
         factoryCostEl.textContent = factoryCost;
     }
 
-    // Initialize game state
+   
     loadGame();
     updateDisplay();
 
-    // Manual Mining Click
+   
     clickBtn.onclick = function() {
         cookies += 1;
         updateDisplay();
     };
 
-    // --- UPGRADE BUY BUTTONS ---
+    
     buyCursorBtn.onclick = function() {
         if (cookies >= cursorCost) {
             cookies -= cursorCost;
@@ -162,15 +162,15 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    // Manual Save & Reset
+    
     saveBtn.onclick = function() {
         saveGame();
         alert("Progress saved!");
     };
 
     resetBtn.onclick = function() {
-        if (confirm("Are you sure you want to reset your terminal cookie progress?")) {
-            localStorage.removeItem("terminalCookieSave");
+        if (confirm("Are you sure you want to reset your progress?")) {
+            localStorage.removeItem("Save");
             cookies = 0;
             cookiesPerSecond = 0;
             cursorCount = 0; cursorCost = 15;
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    // Passive Loop & Auto-Save every 10 seconds
+    
     let saveTimer = 0;
     setInterval(function() {
         if (cookiesPerSecond > 0) {

@@ -69,11 +69,11 @@ document.addEventListener("DOMContentLoaded", function() {
         if (winner === playerSymbol) {
             playerScore++;
             gameMessageEl.textContent = `You [${playerSymbol}] beat Jimmothy! Makes sense, he's like 5 years old.`;
-            addLog(`[SYSTEM]:${currentPlayerName} [${playerSymbol}] defeated Jimmothy`);
+            addLog(`[SYSTEM]: ${currentPlayerName} [${playerSymbol}] defeated Jimmothy`);
         } else if (winner === cpuSymbol) {
             cpuScore++;
             gameMessageEl.textContent = `Uh Oh, CPU Jimmothy [${cpuSymbol}] beat you. You gonna take that?`;
-            addLog(`[SYSTEM]:${currentPlayerName} has a skill issue`);
+            addLog(`[SYSTEM]: ${currentPlayerName} has a skill issue`);
         } else {
             gameMessageEl.textContent = `Stalemate.`;
             addLog(`[SYSTEM]: STALEMATE`);
@@ -110,7 +110,6 @@ document.addEventListener("DOMContentLoaded", function() {
     function makeMove(index, symbol) {
         board[index] = symbol;
         cells[index].textContent = symbol;
-        
        
         if (symbol === playerSymbol) {
             cells[index].classList.add("player-mark");
@@ -119,7 +118,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         addLog(`Cell [${index}] claimed by [${symbol}]`);
     }
-
 
     function findBestMove() {
         let bestScore = -Infinity;
@@ -173,10 +171,27 @@ document.addEventListener("DOMContentLoaded", function() {
     function cpuMove() {
         if (!isGameActive) return;
 
-        const bestIndex = findBestMove();
-        if (bestIndex !== null) {
-            makeMove(bestIndex, cpuSymbol);
+        let emptyCells = [];
+        board.forEach((val, idx) => {
+            if (val === "") emptyCells.push(idx);
+        });
+
+        if (emptyCells.length === 0) return;
+
+        let chosenIndex;
+       
+        if (Math.random() < 0.5) {
+            chosenIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+            addLog("[SYSTEM]: Jimmothy got distracted and picked a random spot.");
+        } else {
+            chosenIndex = findBestMove();
+            if (chosenIndex === null) {
+                chosenIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+            }
+            addLog("[SYSTEM]: Jimmothy actually used his brain for a second.");
         }
+
+        makeMove(chosenIndex, cpuSymbol);
 
         if (!checkWinOrDraw()) {
             currentPlayerTurn = playerSymbol;
@@ -198,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
         board = ["", "", "", "", "", "", "", "", ""];
         isGameActive = true;
         currentPlayerTurn = "X"; 
-        gameMessageEl.textContent = `Turn: ${currentPlayerTurn === playerSymbol ? "Your move" : "CPU Jimmothy's move"} [${currentPlayerTurn}]`;
+        gameMessageEl.textContent = `Turn: ${currentPlayerTurn === playerSymbol ? "Your move" : "Jimmothy's move"} [${currentPlayerTurn}]`;
         addLog("[SYSTEM]: Board Reset");
 
         cells.forEach(cell => {
@@ -207,7 +222,6 @@ document.addEventListener("DOMContentLoaded", function() {
             cell.style.borderColor = "#ffffff";
             cell.style.boxShadow = "none";
         });
-
         
         if (currentPlayerTurn !== playerSymbol) {
             setTimeout(cpuMove, 500);

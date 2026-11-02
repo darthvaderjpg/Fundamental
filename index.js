@@ -6,11 +6,11 @@ console.log("Minigames is currently running");
 - means I'm done
 1. *Translator -
 2. *Cookie Clicker - 
-3. *Cards
+3. *Cards - 
     for cards there will be two objectives:
     a. Either play a card higher than the computer's card
     b. get 21 cards without going over 21 so essentially drawing
-4. *Tic-Tac-Toe
+4. *Tic-Tac-Toe - 
 5. Bookshelf Sorting
 6. *Dino Runner
 7. Flappy Bird
